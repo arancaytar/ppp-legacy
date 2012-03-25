@@ -1,0 +1,4 @@
+name = PPP Legacy Archives
+description = This module displays the old archive of PPP1-4
+core = 7.x
+dependencies[] = xbbcode

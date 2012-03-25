@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * Main module code
+ */
+ 
+/**
+ * Implements hook_menu().
+ */
+function ppp_legacy_menu() {
+  $menu['topic/%/%'] = array(
+    'title callback' => '_ppp_legacy_title_topic',
+    'title arguments' => array(1, 2),
+    'page callback' => '_ppp_legacy_page_topic',
+    'page arguments' => array(1, 2),
+    'access callback' => '_ppp_legacy_access',
+    'access arguments' => array(1),
+    'file' => 'ppp_legacy.topic.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $menu['forum/%'] = array(
+    'title callback' => '_ppp_legacy_title_forum',
+    'title arguments' => array(1),
+    'page callback' => '_ppp_legacy_page_forum',
+    'page arguments' => array(1),
+    'access callback' => '_ppp_legacy_access',
+    'access arguments' => array(1),
+    'file' => 'ppp_legacy.forum.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $menu['admin/config/ppp'] = array(
+    'title' => 'PPP Archive',
+    'description' => 'Settings related to the Pied Piper Project',
+    'position' => 'right',
+    'page callback' => '_ppp_legacy_page_admin',
+    'access arguments' => array('access administration pages'),
+    'file' => 'ppp_legacy.admin.inc',
+  );
+
+  return $menu;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ppp_legacy_theme() {
+  return array(
+    'ppp_post_sidebar' => array(
+      'template' => 'ppp_legacy_post_sidebar',
+      'variables' => array('user' => NULL),
+    ),
+    'ppp_post_body' => array(
+      'template' => 'ppp_legacy_post_body',
+      'variables' => array('user' => NULL, 'post' => NULL),
+    ),
+  );
+}
+
+/**
+ * Determine whether a user has access to a forum.
+ */
+function _ppp_legacy_access($forum) {
+  return (!in_array($forum, variable_get('ppp_legacy_classified_fora', array())) || user_access('read classified content'));
+}
