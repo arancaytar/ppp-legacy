@@ -4,6 +4,8 @@
  * @file
  * Callbacks related to the forum page.
  */
+ 
+define('TOPICS_PER_PAGE', 25);
 
 /**
  * Page callback for the forum.
