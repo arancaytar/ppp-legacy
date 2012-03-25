@@ -78,6 +78,6 @@ function _ppp_legacy_title_forum($fid) {
   module_load_include('inc', 'ppp_legacy', 'ppp_legacy.crud');
   $forum = ppp_legacy_load_forum($fid);
   if ($forum) {
-    return $forum->title;
+    return $forum->name;
   }
 }
