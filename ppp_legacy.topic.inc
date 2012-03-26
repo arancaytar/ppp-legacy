@@ -12,6 +12,7 @@ define('POSTS_PER_PAGE', 25);
  */
 function _ppp_legacy_page_topic($fid, $tid, $page = 1) {
   module_load_include('inc', 'ppp_legacy', 'ppp_legacy.crud');
+  drupal_set_title(_ppp_legacy_title_topic($fid, $tid));
   $topic = ppp_legacy_load_topic($fid, $tid);
   if (!$topic) {
     return MENU_NOT_FOUND;

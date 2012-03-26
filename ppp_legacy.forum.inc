@@ -12,6 +12,7 @@ define('TOPICS_PER_PAGE', 25);
  */
 function _ppp_legacy_page_forum($fid) {
   module_load_include('inc', 'ppp_legacy', 'ppp_legacy.crud');
+  drupal_set_title(_ppp_legacy_title_forum($fid));
   $forum = ppp_legacy_load_forum($fid);
   if (!$forum) {
     return MENU_NOT_FOUND;
