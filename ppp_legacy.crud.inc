@@ -20,6 +20,7 @@ function ppp_legacy_load_forum($fid) {
  */
 function ppp_legacy_load_topics_pager($fid, $header, $limit) {
   $query = db_select('ppp_topic')->extend('PagerDefault')->extend('TableSort');
+  $query->condition('fid', $fid);
   $query->limit($limit);
   $query->fields('ppp_topic', array('tid', 'title', 'author', 'author_pdn', 'length', 'ended'));
   $query->orderByHeader($header);
