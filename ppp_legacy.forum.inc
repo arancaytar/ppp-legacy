@@ -64,7 +64,7 @@ function _ppp_legacy_page_forum($fid) {
     $query->join('ppp_user', 'u', 'p.author = u.uid');
     $page['topics']['#rows'][$topic->tid] = array(
       'id' => $topic->tid,
-      'title' => l($topic->title, "topic/{$topic->tid}"),
+      'title' => l($topic->title, "topic/$fid/{$topic->tid}"),
       'author' => l($topic->author_pdn, 'user/' . $topic->author),
       'length' => $topic->length,
       'ended' => format_date($topic->ended),
