@@ -76,7 +76,7 @@ function _ppp_legacy_page_forum($fid) {
         'class' => array('numeric-field'),
       ),
       'title' => l($topic->title, "topic/$fid/{$topic->tid}"),
-      'author' => l($topic->author_pdn, 'user/' . $topic->author),
+      'author' => l($topic->author_pdn, 'member/' . $topic->author),
       'length' => array(
         'data' => $topic->length,
         'class' => array('numeric-field'),
