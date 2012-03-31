@@ -12,11 +12,17 @@ define('TOPICS_PER_PAGE', 25);
  */
 function _ppp_legacy_page_forum($fid) {
   module_load_include('inc', 'ppp_legacy', 'ppp_legacy.crud');
-  drupal_set_title(_ppp_legacy_title_forum($fid));
   $forum = ppp_legacy_load_forum($fid);
   if (!$forum) {
     return MENU_NOT_FOUND;
   }
+
+  drupal_set_title(_ppp_legacy_title_forum($fid));
+  drupal_set_breadcrumb(array(
+    l(t('Home'), '<front>'),
+    l(t('Archives'), 'archive'),
+  ));
+
   $page = array(
     'description' => array(
       '#markup' => $forum->description,
@@ -26,6 +32,7 @@ function _ppp_legacy_page_forum($fid) {
     ),
     'topics' => array(
       '#theme' => 'table',
+      '#sticky' => FALSE,
       '#attributes' => array(
         'class' => array('ppp-topics-table'),
       ),
@@ -35,11 +42,11 @@ function _ppp_legacy_page_forum($fid) {
           'field' => 'tid',
         ),
         'title' => array(
-          'data' => t('Title'),
+          'data' => t('Topic'),
           'field' => 'title',
         ),
         'author' => array(
-          'data' => t('Author'),
+          'data' => t('Topic Starter'),
           'field' => 'author_pdn',
         ),
         'length' => array(
@@ -64,11 +71,19 @@ function _ppp_legacy_page_forum($fid) {
     $query = db_select('ppp_post', 'p');
     $query->join('ppp_user', 'u', 'p.author = u.uid');
     $page['topics']['#rows'][$topic->tid] = array(
-      'id' => $topic->tid,
+      'id' => array(
+        'data' => $topic->tid,
+        'class' => array('numeric-field'),
+      ),
       'title' => l($topic->title, "topic/$fid/{$topic->tid}"),
       'author' => l($topic->author_pdn, 'user/' . $topic->author),
-      'length' => $topic->length,
-      'ended' => format_date($topic->ended),
+      'length' => array(
+        'data' => $topic->length,
+        'class' => array('numeric-field'),
+      ),
+      'ended' => array(
+        'data' => format_date($topic->ended, 'custom', 'F d, Y <\sp\a\n \c\l\a\s\s="\t\i\m\e">H:i</\sp\a\n>'),
+      ),
     );
   }
 

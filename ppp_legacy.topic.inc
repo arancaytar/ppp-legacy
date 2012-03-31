@@ -10,14 +10,22 @@ define('POSTS_PER_PAGE', 25);
 /**
  * Page callback for the topic.
  */
-function _ppp_legacy_page_topic($fid, $tid, $page = 1) {
+function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   module_load_include('inc', 'ppp_legacy', 'ppp_legacy.crud');
-  drupal_set_title(_ppp_legacy_title_topic($fid, $tid));
+  $forum = ppp_legacy_load_forum($fid);
   $topic = ppp_legacy_load_topic($fid, $tid);
   if (!$topic) {
     return MENU_NOT_FOUND;
   }
-  $page = preg_match('/^p(\d+)$/', $page, $_) ? $_[1] : 0;  
+
+  drupal_set_title(_ppp_legacy_title_topic($fid, $tid));
+  drupal_set_breadcrumb(array(
+    l(t('Home'), '<front>'),
+    l(t('Archives'), 'archive'),
+    l($forum->name, "forum/$fid"),
+  ));  
+
+  $page = preg_match('/^p(\d+)$/', $page, $_) ? $_[1] - 1 : 0;
   $posts = ppp_legacy_load_posts_pager($fid, $tid, $page * POSTS_PER_PAGE, POSTS_PER_PAGE);
   $pager = _ppp_legacy_topic_pager($fid, $tid, ceil($topic->length / POSTS_PER_PAGE), $page);
   
@@ -26,7 +34,7 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 1) {
     'topic' => array(
       '#theme' => 'table',
       '#sticky' => FALSE,
-      '#header' => array(t('Author'), t('Content')),
+      '#header' => array(t('Author'), t('Topic: @title', array('@title' => $topic->title))),
       '#rows' => array(),
       '#attributes' => array('class' => array('topic-table')),
     ),
@@ -59,8 +67,19 @@ function _ppp_legacy_title_topic($fid, $tid) {
 }
 
 function _ppp_legacy_topic_pager($fid, $tid, $pages, $page) {
-  for ($i = 1; $i <= $pages; $i++) {
-    $pager["page_$i"] = $i == $page ? "<strong>$i</strong>" : l($i, "$fid/$tid/p$i");
+  if ($pages > 1) {
+    $pager = array(
+      '#prefix' => '<h2 class="element-invisible">Pages</h2><div class="item-list"><ul class="pager">',
+      '#suffix' => '</ul></div>',
+    );
+    for ($i = 1; $i <= $pages; $i++) {
+      if ($i == $page + 1) {
+        $pager["page_$i"]['#markup'] = '<li class="pager-current">' . $i . '</li>';
+      }
+      else {
+        $pager["page_$i"]['#markup'] = '<li class="pager-item">' . l($i, "topic/$fid/$tid/p$i") . '</li>';
+      }
+    }
+    return $pager;
   }
-  return $pager;
 }

@@ -9,6 +9,13 @@
  * Implements hook_menu().
  */
 function ppp_legacy_menu() {
+  $menu['archives'] = array(
+    'title' => 'Archives',
+    'page callback' => '_ppp_legacy_page_main',
+    'file' => 'ppp_legacy.main.inc',
+    'access arguments' => array('access content'),
+  );
+
   $menu['topic/%/%'] = array(
     'title callback' => '_ppp_legacy_title_topic',
     'title arguments' => array(1, 2),
@@ -30,13 +37,24 @@ function ppp_legacy_menu() {
     'file' => 'ppp_legacy.forum.inc',
     'type' => MENU_CALLBACK,
   );
+  
+  $menu['member/%'] = array(
+    'title callback' => '_ppp_legacy_title_user',
+    'title arguments' => array(1),
+    'page callback' => '_ppp_legacy_page_user',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'file' => 'ppp_legacy.user.inc',
+    'type' => MENU_CALLBACK,
+  );
 
   $menu['admin/config/ppp'] = array(
     'title' => 'PPP Archive',
     'description' => 'Settings related to the Pied Piper Project',
     'position' => 'right',
-    'page callback' => '_ppp_legacy_page_admin',
-    'access arguments' => array('access administration pages'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_ppp_legacy_admin'),
+    'access arguments' => array('administer site configuration'),
     'file' => 'ppp_legacy.admin.inc',
   );
 
@@ -64,4 +82,36 @@ function ppp_legacy_theme() {
  */
 function _ppp_legacy_access($forum) {
   return (!in_array($forum, variable_get('ppp_legacy_classified_fora', array())) || user_access('read classified content'));
+}
+
+function ppp_legacy_filter_info() {
+  $filters['linebreaks'] = array(
+    'title' => t('Render linebreaks'),
+    'description' => t('A filter that avoids the core shenanigans.'),
+    'process callback' => '_ppp_legacy_filter_linebreaks',
+  );
+  return $filters;
+}
+
+function _ppp_legacy_filter_linebreaks($text) {
+  return str_replace("\n", '<br />', $text);
+  // There. How hard was that?
+}
+
+function ppp_legacy_xbbcode_info() {
+  $tags['quote'] = array(
+    'description' => t('UBB-style quote tag'),
+    'callback' => '_ppp_legacy_xbbcode_quote',
+    'sample' => '[quote]Originally written by Arancaytar:[b]He who quotes himself is a fool.[/b][/quote]',
+  );
+  return $tags;
+}
+
+function _ppp_legacy_xbbcode_quote($tag) {
+  $out = '<blockquote><span class="ppp-quote-label">quote:</span><hr />';
+  if ($tag->option) {
+    $out .= 'Originally written by ' . $tag->option . ':<br />';
+  }
+  $out .= $tag->content . '<hr /></blockquote>';
+  return $out;
 }

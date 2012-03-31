@@ -40,6 +40,9 @@ function _ppp_legacy_page_main() {
       ),
     );
     foreach ($fora[$i] as $fid => $forum) {
+      if (!_ppp_legacy_access($fid)) {
+        continue;
+      }
       $page['fora']['#rows'][] = array(
         array(
           'data' => $fid,

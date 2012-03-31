@@ -9,8 +9,17 @@
  * Load one forum object.
  */
 function ppp_legacy_load_forum($fid) {
-  return db_query('SELECT topics, posts, name, category, description, position FROM {ppp_forum} WHERE fid = :fid', array(':fid' => $fid))->fetch();
+  return db_query('SELECT name, description FROM {ppp_forum} WHERE fid = :fid', array(':fid' => $fid))->fetch();
 }
+
+function ppp_legacy_load_fora($category) {
+  $query = db_query('SELECT fid, name, description, topics, posts, lastpost_author, lastpost_author_pdn, lastpost_icon, lastpost_topic, lastpost_topic_title, lastpost_date FROM {ppp_forum} WHERE category = :category ORDER BY position', array(':category' => $category));
+  while ($forum = $query->fetch()) {
+    $fora[$forum->fid] = $forum;
+  }
+  return $fora;
+}
+
 
 // create table legacy_ppp_forum select forum_id as fid,name,description,topics,posts,category,position from ppp_forums;
 // create table legacy_ppp_topic select a.forum_id as fid, a.topic_id as tid, a.title, a.author, c.displayed_name as author_pdn, a.length, a.lastpost as ended from ppp_topics a join mera b on a.forum_id=b.forum_id and a.topic_id = b.topic_id and a.archived=b.era join ppp_members c on a.author=c.id;
@@ -50,6 +59,22 @@ function ppp_legacy_load_posts_pager($fid, $tid, $start, $limit) {
   }
   return $posts;
 }
+
+function ppp_legacy_load_posts_user($uid) {
+  $query = db_select('ppp_post')->extend('PagerDefault');
+  $query->fields('ppp_post', array('fid', 'tid', 'pid', 'author', 'author_pdn', 'post_date', 'body', 'icon', 'edit_date', 'edit_name'));
+  $query->condition('author', $uid);
+  $query->orderBy('post_date', 'DESC');
+  $query->limit(25);
+  $result = $query->execute();
+  $posts = array();
+  while ($row = $result->fetch()) {
+    $row->body = html_entity_decode($row->body, ENT_COMPAT, "UTF-8");
+    $posts[$row->pid] = $row;
+  }
+  return $posts;
+}
+
 
 function ppp_legacy_load_user($uid) {
   return db_query('SELECT uid, pdn, title, posts, homepage, joined FROM {ppp_user} WHERE uid = :uid', array(':uid' => $uid))->fetch();
