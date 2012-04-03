@@ -86,7 +86,7 @@ function ppp_legacy_load_posts_user($uid) {
 
 function ppp_legacy_load_user($uid) {
   $data = &drupal_static(__FUNCTION__);
-  $data[0] = (object) array('uid' => 0, 'pdn' => '-', 'title' => '');
+  $data[0] = (object) array('uid' => 0, 'pdn' => '-', 'title' => '', 'homepage' => '', 'joined' => 0, 'posts' => 0);
   if (!isset($data[$uid])) {
     $data[$uid] = db_query('SELECT uid, pdn, title, posts, homepage, joined FROM {ppp_user} WHERE uid = :uid', array(':uid' => $uid))->fetch();
   }
