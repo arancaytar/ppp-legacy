@@ -48,6 +48,9 @@ function _ppp_legacy_page_user($uid) {
   $page['pager_bottom'] = array('#theme' => 'pager');
 
   foreach ($posts as $post) {
+    if (!_ppp_legacy_access($post->fid)) {
+      continue;
+    }
     $topic = ppp_legacy_load_topic($post->fid, $post->tid);
     $page['posts']['#rows'][] = array(
       array(
