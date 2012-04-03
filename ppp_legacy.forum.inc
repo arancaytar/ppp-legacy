@@ -20,7 +20,6 @@ function _ppp_legacy_page_forum($fid) {
   drupal_set_title(_ppp_legacy_title_forum($fid));
   drupal_set_breadcrumb(array(
     l(t('Home'), '<front>'),
-    l(t('Archives'), 'archive'),
   ));
 
   $page = array(

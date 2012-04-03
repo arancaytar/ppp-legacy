@@ -21,7 +21,6 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   drupal_set_title(_ppp_legacy_title_topic($fid, $tid));
   drupal_set_breadcrumb(array(
     l(t('Home'), '<front>'),
-    l(t('Archives'), 'archive'),
     l($forum->name, "forum/$fid"),
   ));  
 
