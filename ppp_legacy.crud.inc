@@ -9,7 +9,11 @@
  * Load one forum object.
  */
 function ppp_legacy_load_forum($fid) {
-  return db_query('SELECT name, description FROM {ppp_forum} WHERE fid = :fid', array(':fid' => $fid))->fetch();
+  $data = &drupal_static(__FUNCTION__);
+  if (!isset($data[$fid])) {
+    $data[$fid] = db_query('SELECT name, description FROM {ppp_forum} WHERE fid = :fid', array(':fid' => $fid))->fetch();
+  }
+  return $data[$fid];
 }
 
 function ppp_legacy_load_fora($category) {
@@ -42,7 +46,11 @@ function ppp_legacy_load_topics_pager($fid, $header, $limit) {
 }
 
 function ppp_legacy_load_topic($fid, $tid) {
-  return db_query('SELECT tid, title, author, author_pdn, length, ended FROM {ppp_topic} WHERE fid = :fid AND tid = :tid', array(':fid' => $fid, ':tid' => $tid))->fetch();
+  $data = &drupal_static(__FUNCTION__);
+  if (!isset($data["$fid-$tid"])) {
+    $data["$fid-$tid"] = db_query('SELECT tid, title, author, author_pdn, length, ended FROM {ppp_topic} WHERE fid = :fid AND tid = :tid', array(':fid' => $fid, ':tid' => $tid))->fetch();
+  }
+  return $data["$fid-$tid"];
 }
 
 function ppp_legacy_load_posts_pager($fid, $tid, $start, $limit) {
@@ -77,5 +85,10 @@ function ppp_legacy_load_posts_user($uid) {
 
 
 function ppp_legacy_load_user($uid) {
-  return db_query('SELECT uid, pdn, title, posts, homepage, joined FROM {ppp_user} WHERE uid = :uid', array(':uid' => $uid))->fetch();
+  $data = &drupal_static(__FUNCTION__);
+  $data[0] = (object) array('uid' => 0, 'pdn' => '-', 'title' => '');
+  if (!isset($data[$uid])) {
+    $data[$uid] = db_query('SELECT uid, pdn, title, posts, homepage, joined FROM {ppp_user} WHERE uid = :uid', array(':uid' => $uid))->fetch();
+  }
+  return $data[$uid] ? $data[$uid] : $data[0];
 }
