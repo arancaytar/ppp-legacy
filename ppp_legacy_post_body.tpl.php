@@ -8,4 +8,4 @@
 <?php print str_replace('[edit]', $editline, check_markup($post->body, variable_get('ppp_legacy_post_format', 'xbbcode'))) ?>
 <hr size="1" class="ppp-rule" />
 <span class="ppp-postcount">Posts: <strong><?php print l($user->posts, 'member/' . $user->uid) ?></strong></span> | 
-<span class="ppp-registered">Registered: <strong><?php print format_date($user->joined, 'custom', 'l, F j Y H:i') ?></strong>
+<span class="ppp-registered">Registered: <strong><?php print format_date($user->joined, 'custom', 'l, F j Y H:i') ?></strong></span>
