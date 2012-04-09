@@ -78,7 +78,7 @@ function ppp_legacy_load_posts_user($uid) {
   $posts = array();
   while ($row = $result->fetch()) {
     $row->body = html_entity_decode($row->body, ENT_COMPAT, "UTF-8");
-    $posts[$row->pid] = $row;
+    $posts[] = $row;
   }
   return $posts;
 }
