@@ -52,10 +52,14 @@ function _ppp_legacy_page_user($uid) {
       continue;
     }
     $topic = ppp_legacy_load_topic($post->fid, $post->tid);
+    $link = 'topic/' . $post->fid . '/' . $post->tid;
+    if ($post->pid >= 25) {
+      $link .= '/p' . (1 + floor($post->pid / 25));
+    }
     $page['posts']['#rows'][] = array(
       array(
         'colspan' => 2,
-        'data' => l($topic->title, 'topic/' . $post->fid . '/' . $post->tid),
+        'data' => l($topic->title, $link, array('fragment' => $post->pid)),
         'class' => array('bluehead'),
       ),
     );
