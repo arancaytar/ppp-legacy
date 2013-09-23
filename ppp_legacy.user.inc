@@ -52,6 +52,7 @@ function _ppp_legacy_page_user($uid) {
       continue;
     }
     $topic = ppp_legacy_load_topic($post->fid, $post->tid);
+    $forum = ppp_legacy_load_forum($post->fid);
     $link = 'topic/' . $post->fid . '/' . $post->tid;
     if ($post->pid >= 25) {
       $link .= '/p' . (1 + floor($post->pid / 25));
@@ -59,7 +60,7 @@ function _ppp_legacy_page_user($uid) {
     $page['posts']['#rows'][] = array(
       array(
         'colspan' => 2,
-        'data' => l($topic->title, $link, array('fragment' => $post->pid)),
+        'data' => t('!topic in !forum', array('!topic' => l($topic->title, $link, array('fragment' => $post->pid)), '!forum' => l($forum->name, 'forum/' . $post->fid))),
         'class' => array('bluehead'),
       ),
     );
