@@ -163,7 +163,8 @@ hr, table, fieldset {
 h1 {
   font-size: 2em;
   line-height: 1.5em;
-  margin: 0.75em 0;
+  /*margin-top: 1.5em;*/
+  margin: 0.75em 0 !important;
   /* 0.75em is equivalent to 1.5em in the page's base font. font. Remember, a
      margin specified in ems is relative to the element's font-size, not to the
      pages' base font size. So, for example, if we want a 1.5em margin (relative
@@ -270,7 +271,6 @@ table {
 }
 
 th {
-  text-align: left; /* LTR */
   padding: 0;
   border-bottom: none;
 }
