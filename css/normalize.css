@@ -115,7 +115,7 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 
   /* Establish a vertical rhythm. */
-  line-height: 1.5em;
+  /*line-height: 1.5em;*/
 }
 
 /* Address `font-family` inconsistency between `textarea` and other form elements. */

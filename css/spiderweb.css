@@ -1,10 +1,27 @@
 body	{
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 9.5pt;
 	margin-left:7.5%;
 	margin-right:7.5%;
 	margin-top:2em;
+}
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9.5pt;
 	color:#333;
+}
+
+#site-name a:link, #site-name a:visited {
+    color: rgb(0, 0, 0);
+}
+
+#logo {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+#name-and-slogan {
+    float: left;
 }
 
 p {
@@ -36,6 +53,7 @@ table.ppp-topics-table th, table.topic-table th, table.ppp-fora-table th, table.
   color:white;
   padding:3px 5px 3px 5px;
   border: 1px solid #5b7495;
+  text-align:left;
 }
 
 table.ppp-topics-table th a {
