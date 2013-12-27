@@ -15,30 +15,31 @@
   a:link,
   a:visited {
     text-decoration: underline !important;
+
+    /* Don't underline header. */
+    &.header__site-link {
+      text-decoration: none !important;
+    }
   }
 
-  /* Don't underline header. */
-  a:link.header__site-link,
-  a:visited.header__site-link {
-    text-decoration: none !important;
-  }
+  .main-content {
+    /* Add visible URL after links. */
+    a[href]:after {
+      content: " (" attr(href) ")";
+      font-weight: normal;
+      font-size: $base-font-size;
+    }
 
-  /* Add visible URL after links. */
-  .main-content a[href]:after {
-    content: " (" attr(href) ")";
-    font-weight: normal;
-    font-size: 16px;
-  }
+    /* Only display useful links. */
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+      content: "";
+    }
 
-  /* Only display useful links. */
-  .main-content a[href^="javascript:"]:after,
-  .main-content a[href^="#"]:after {
-    content: "";
-  }
-
-  /* Add visible title after abbreviations. */
-  .main-content abbr[title]:after {
-    content: " (" attr(title) ")";
+    /* Add visible title after abbreviations. */
+    abbr[title]:after {
+      content: " (" attr(title) ")";
+    }
   }
 
   /* Un-float the content. */
