@@ -1,0 +1,182 @@
+body	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9.5pt;
+	margin-left:7.5%;
+	margin-right:7.5%;
+	margin-top:2em;
+	color:#333;
+}
+
+p {
+  margin-top:1em;
+}
+
+nav.breadcrumb {
+  text-align:right;
+  border: 1px solid #5a7394;
+  padding:5px;
+}
+
+table.ppp-topics-table, table.topic-table, table.ppp-fora-table, table.ppp-user-profile {
+  border:1px solid #5b7495;
+  border-bottom:2px solid #5b7495;
+  background:#5b7495;
+  width:100%;
+}
+
+table.ppp-topics-table th {
+  font-size:11px;
+}
+
+
+  /*text-align:center;*/
+
+table.ppp-topics-table th, table.topic-table th, table.ppp-fora-table th, table.ppp-user-profile th {
+  background-color:#58131b;
+  color:white;
+  padding:3px 5px 3px 5px;
+  border: 1px solid #5b7495;
+}
+
+table.ppp-topics-table th a {
+  color:yellow;
+  margin-right: 13px;
+}
+
+table.topic-table tr {
+  border:1px solid #5b7495;
+}
+
+table.ppp-topics-table td, table.ppp-user-profile td {
+  vertical-align:top;
+  border: 1px solid #5b7495;
+}
+
+table td.numeric-field {
+  text-align:right;
+  padding-right:5px;
+}
+
+table.ppp-topics-table td span.time {
+  color:#a62a2a
+}
+
+table.topic-table td {
+  padding-top:10px;
+  padding-bottom:5px;
+}
+
+table.ppp-topics-table td,
+table.ppp-fora-table td {
+  padding:5px;
+  padding-left:10px;
+  padding-right:10px;
+}
+
+table.topic-table tr td:first-child {
+  width:180px;
+  padding-left:10px;
+}
+
+table.topic-table tr.odd,
+table.ppp-topics-table tr td:nth-child(odd),
+table.ppp-fora-table tr td:nth-child(odd)
+{
+  background:#f7f7f7;
+}
+
+table.topic-table tr.even,
+table.ppp-topics-table tr td:nth-child(even),
+table.ppp-fora-table tr td:nth-child(even)
+{
+  background:#eee;
+}
+
+table.ppp-topics-table tr td:first-child,
+table.ppp-topics-table tr td:nth-child(4)
+{
+  width:4em;
+}
+
+table.ppp-fora-table tr td.bluehead {
+	background-color:#5b7495;
+	font-weight:bold;
+	color:#fff;
+}
+
+p.ppp-forum-desc {
+  margin-top:0;
+  margin-bottom:0.25em;
+}
+
+a.ppp-forum-link {
+  font-weight:bold;
+}
+
+
+table.ppp-topics-table tr td:nth-child(5) 
+{
+  /*width:15em;*/
+}
+
+
+table.topic-table hr {
+  margin-top:5px;
+  margin-bottom:5px;
+  border-top:1px solid #a8a8a8;
+  border-bottom:0px;
+}
+
+blockquote hr {
+  border-top:1px solid black !important;
+}
+
+blockquote .ppp-quote-label {
+  margin:0px;
+  font-size:8pt;
+}
+
+.ppp-postdate {
+  color:#a62a2a;
+  padding-right:5px;
+}
+
+.ppp-username a, .ppp-postcount a {
+  color:#333 !important;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+a:link {
+  color:#5a7394;
+}
+a:visited {
+  color:#202063;
+}
+a:active {
+  color:#58131b;
+}
+
+.ppp-icon { padding:3px; padding-top:10px; padding-bottom:5px; padding-left:20px; background: no-repeat center; }
+
+.ppp-icon-1 { background-image:url(../images/icon1.png); }
+.ppp-icon-2 { background-image:url(../images/icon2.png); }
+.ppp-icon-3 { background-image:url(../images/icon3.png); }
+.ppp-icon-4 { background-image:url(../images/icon4.png); }
+.ppp-icon-5 { background-image:url(../images/icon5.png); }
+.ppp-icon-6 { background-image:url(../images/icon6.png); }
+.ppp-icon-7 { background-image:url(../images/icon7.png); }
+.ppp-icon-8 { background-image:url(../images/icon8.png); }
+.ppp-icon-9 { background-image:url(../images/icon9.png); }
+.ppp-icon-10 { background-image:url(../images/icon10.png); }
+.ppp-icon-11 { background-image:url(../images/icon11.png); }
+.ppp-icon-12 { background-image:url(../images/icon12.png); }
+.ppp-icon-13 { background-image:url(../images/icon13.png); }
+.ppp-icon-14 { background-image:url(../images/icon14.png); }
+
+.ppp-icon-profile { padding-left:48px; padding-right:8px; background-image:url(../images/profile.png); }
+.ppp-icon-homepage { padding-left:48px; padding-right:8px; background-image:url(../images/homepage.png); }
+
+div#navigation {
+  float:right;
+}

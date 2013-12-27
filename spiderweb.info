@@ -12,8 +12,8 @@
 ; page at admin/appearance.
 
 screenshot  = screenshot.png
-name        = Zen Sub-theme Starter Kit
-description = Read the <a href="http://drupal.org/node/873778">online docs</a> or the included README.txt on how to create a theme with Zen.
+name        = Spiderweb
+description = The UBB.classic look of yore, with a brand-new UI.
 
 
 
@@ -50,7 +50,7 @@ stylesheets[all][] = system.menus.css
 ; Then we add our own stylesheets.
 stylesheets[all][] = css/html-reset.css
 stylesheets[all][] = css/wireframes.css
-stylesheets[all][] = css/layouts/fixed-width.css
+stylesheets[all][] = css/layout-liquid.css
 stylesheets[all][] = css/page-backgrounds.css
 stylesheets[all][] = css/tabs.css
 stylesheets[all][] = css/pages.css
@@ -62,6 +62,7 @@ stylesheets[all][] = css/comments.css
 stylesheets[all][] = css/forms.css
 stylesheets[all][] = css/fields.css
 stylesheets[all][] = css/print.css
+stylesheets[all][] = css/spiderweb.css
 
 ; Built-in conditional stylesheet support has been removed from Zen 7.x-5.x.
 ; Instead, Zen now adds conditional-comment-included classes to the html
@@ -138,8 +139,8 @@ features[] = secondary_menu
 settings[zen_breadcrumb]           = yes
 settings[zen_breadcrumb_separator] = ' › '
 settings[zen_breadcrumb_home]      = 1
-settings[zen_breadcrumb_trailing]  = 1
-settings[zen_breadcrumb_title]     = 0
+settings[zen_breadcrumb_trailing]  = 0
+settings[zen_breadcrumb_title]     = 1
 settings[zen_skip_link_anchor]     = main-menu
 settings[zen_skip_link_text]       = Jump to navigation
 settings[zen_html5_respond_meta][] = respond

@@ -24,12 +24,3 @@ dd {
   margin: 0 2em 0 0;
 }
 
-/*
- * Tables
- *
- * Drupal provides table styling which is only useful for its admin section
- * forms, so we override this default CSS. (We set it back in forms.css.)
- */
-th {
-  text-align: right;
-}
