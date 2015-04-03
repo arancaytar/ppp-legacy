@@ -254,6 +254,24 @@ td.menu-disabled {
   background-color: #0072b9;
   background-image: url('../../images/progress.gif');
 }
+.tabs-primary__tab,
+.tabs-primary__tab.is-active,
+.tabs-secondary__tab,
+.tabs-secondary__tab.is-active {
+  float: left; /* LTR */
+  margin: 0 3px;
+}
+a.tabs-primary__tab-link,
+a.tabs-primary__tab-link.is-active,
+a.tabs-secondary__tab-link,
+a.tabs-secondary__tab-link.is-active {
+  border: 1px solid #e9e9e9;
+  border-right: 0;
+  border-bottom: 0;
+  display: block;
+  line-height: 1.5em;
+  text-decoration: none;
+}
 
 /**
  * @file
@@ -624,6 +642,12 @@ a.tabs-secondary__tab-link {
   display: block;
   line-height: 1.5em;
   text-decoration: none;
+}
+
+/* Nested comments are indented. */
+.indented {
+  /* Drupal core uses a 25px left margin. */
+  margin-left: 30px; /* LTR */
 }
 
 /* Primary tabs. */

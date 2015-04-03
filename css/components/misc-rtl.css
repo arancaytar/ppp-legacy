@@ -53,6 +53,12 @@ form th {
   padding-left: 1em;
   padding-right: 0;
 }
+.tabs-primary__tab,
+.tabs-primary__tab.is-active,
+.tabs-secondary__tab,
+.tabs-secondary__tab.is-active {
+  float: right;
+}
 
 /**
  * @file
@@ -111,6 +117,25 @@ form th {
 /* Main menu and secondary menu links and menu block links. */
 .main-navigation .links,
 .main-navigation .menu {
+  text-align: right;
+}
+
+/**
+ * Comments.
+ */
+
+/* Nested comments are indented. */
+.indented {
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+/**
+ * Forms.
+ */
+
+/* Drupal's default login form block */
+#user-login-form {
   text-align: right;
 }
 .main-navigation .links li,
