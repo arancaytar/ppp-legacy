@@ -156,7 +156,6 @@ html.js #user-login-form li.openid-link,
 a.button {
   -webkit-appearance: button;
   -moz-appearance: button;
-  appearance: button;
 }
 
 /**
@@ -607,13 +606,13 @@ tr.selected td {
 .tabs-secondary {
   overflow: hidden;
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(100%, #bbbbbb), color-stop(100%, transparent));
-  background-image: -webkit-linear-gradient(bottom, #bbbbbb 1px, transparent 1px);
-  background-image: -moz-linear-gradient(bottom, #bbbbbb 1px, transparent 1px);
-  background-image: -o-linear-gradient(bottom, #bbbbbb 1px, transparent 1px);
-  background-image: linear-gradient(bottom, #bbbbbb 1px, transparent 1px);
+  background-image: -webkit-linear-gradient(to bottom, #bbbbbb 1px, transparent 1px);
+  background-image: -moz-linear-gradient(to bottom, #bbbbbb 1px, transparent 1px);
+  background-image: -o-linear-gradient(to bottom, #bbbbbb 1px, transparent 1px);
+  background-image: linear-gradient(to bottom, #bbbbbb 1px, transparent 1px);
   /* IE 9 and earlier don't understand gradients. */
   list-style: none;
-  border-bottom: 1px solid #bbbbbb \0/ie;
+  border-bottom: 1px solid #bbbbbb;
   margin: 1.5em 0;
   padding: 0 2px;
   white-space: nowrap;
@@ -653,7 +652,7 @@ a.tabs-secondary__tab-link {
   border: 1px solid #bbbbbb;
   border-bottom-color: transparent;
   /* IE 9 and earlier don't understand gradients. */
-  border-bottom: 0 \0/ie;
+  border-bottom: 0;
 }
 .is-active.tabs-primary__tab {
   border-bottom-color: white;
