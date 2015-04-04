@@ -73,6 +73,7 @@ function _ppp_legacy_page_user($uid) {
       'body' => theme('ppp_post_body', array(
         'post' => $post,
         'user' => $user,
+        'in_topic' => FALSE,
       )),
     );
   }

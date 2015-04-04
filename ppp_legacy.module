@@ -72,7 +72,7 @@ function ppp_legacy_theme() {
     ),
     'ppp_post_body' => array(
       'template' => 'ppp_legacy_post_body',
-      'variables' => array('user' => NULL, 'post' => NULL),
+      'variables' => array('user' => NULL, 'post' => NULL, 'in_topic' => TRUE),
     ),
   );
 }
