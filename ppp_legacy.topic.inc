@@ -50,6 +50,7 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
       'body' => theme('ppp_post_body', array(
         'post' => $post,
         'user' => ppp_legacy_load_user($post->author),
+        'in_topic' => TRUE,
       )),
     );
   }
