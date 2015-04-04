@@ -34,7 +34,6 @@
   border-left: 0 !important;
   border-right: 0 !important;
   word-wrap: break-word;
-  *behavior: url("/path/to/boxsizing.htc");
   _display: inline;
   _overflow: hidden;
   _overflow-y: visible;
@@ -44,8 +43,6 @@
 .header,
 .main,
 .footer {
-  *position: relative;
-  *zoom: 1;
 }
 .header:before,
 .header:after,

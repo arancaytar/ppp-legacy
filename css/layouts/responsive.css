@@ -35,7 +35,6 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
-  *behavior: url("/path/to/boxsizing.htc");
   _display: inline;
   _overflow: hidden;
   _overflow-y: visible;
@@ -45,8 +44,6 @@
 .header,
 .main,
 .footer {
-  *position: relative;
-  *zoom: 1;
 }
 .header:before,
 .header:after,
@@ -164,7 +161,6 @@
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     word-wrap: break-word;
-    *behavior: url("/path/to/boxsizing.htc");
     _display: inline;
     _overflow: hidden;
     _overflow-y: visible;
