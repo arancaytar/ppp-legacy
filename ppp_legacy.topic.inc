@@ -46,7 +46,6 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
         'data' => theme('ppp_post_sidebar', array(
           'user' => ppp_legacy_load_user($post->author),
         )),
-        'valign' => 'top',
       ),
       'body' => theme('ppp_post_body', array(
         'post' => $post,

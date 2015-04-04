@@ -69,7 +69,6 @@ function _ppp_legacy_page_user($uid) {
         'data' => theme('ppp_post_sidebar', array(
           'user' => $user,
         )),
-        'valign' => 'top',
       ),
       'body' => theme('ppp_post_body', array(
         'post' => $post,
