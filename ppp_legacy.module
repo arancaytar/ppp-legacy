@@ -9,54 +9,54 @@
  * Implements hook_menu().
  */
 function ppp_legacy_menu() {
-  $menu['archives'] = array(
+  $menu['archives'] = [
     'title' => 'Archives',
     'page callback' => '_ppp_legacy_page_main',
     'file' => 'ppp_legacy.main.inc',
-    'access arguments' => array('access content'),
-  );
+    'access arguments' => ['access content'],
+  ];
 
-  $menu['topic/%/%'] = array(
+  $menu['topic/%/%'] = [
     'title callback' => '_ppp_legacy_title_topic',
-    'title arguments' => array(1, 2),
+    'title arguments' => [1, 2],
     'page callback' => '_ppp_legacy_page_topic',
-    'page arguments' => array(1, 2),
+    'page arguments' => [1, 2],
     'access callback' => '_ppp_legacy_access',
-    'access arguments' => array(1),
+    'access arguments' => [1],
     'file' => 'ppp_legacy.topic.inc',
     'type' => MENU_CALLBACK,
-  );
+  ];
 
-  $menu['forum/%'] = array(
+  $menu['forum/%'] = [
     'title callback' => '_ppp_legacy_title_forum',
-    'title arguments' => array(1),
+    'title arguments' => [1],
     'page callback' => '_ppp_legacy_page_forum',
-    'page arguments' => array(1),
+    'page arguments' => [1],
     'access callback' => '_ppp_legacy_access',
-    'access arguments' => array(1),
+    'access arguments' => [1],
     'file' => 'ppp_legacy.forum.inc',
     'type' => MENU_CALLBACK,
-  );
+  ];
   
-  $menu['member/%'] = array(
+  $menu['member/%'] = [
     'title callback' => '_ppp_legacy_title_user',
-    'title arguments' => array(1),
+    'title arguments' => [1],
     'page callback' => '_ppp_legacy_page_user',
-    'page arguments' => array(1),
-    'access arguments' => array('access content'),
+    'page arguments' => [1],
+    'access arguments' => ['access content'],
     'file' => 'ppp_legacy.user.inc',
     'type' => MENU_CALLBACK,
-  );
+  ];
 
-  $menu['admin/config/ppp'] = array(
+  $menu['admin/config/ppp'] = [
     'title' => 'PPP Archive',
     'description' => 'Settings related to the Pied Piper Project',
     'position' => 'right',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('_ppp_legacy_admin'),
-    'access arguments' => array('administer site configuration'),
+    'page arguments' => ['_ppp_legacy_admin'],
+    'access arguments' => ['administer site configuration'],
     'file' => 'ppp_legacy.admin.inc',
-  );
+  ];
 
   return $menu;
 }
@@ -65,31 +65,31 @@ function ppp_legacy_menu() {
  * Implements hook_theme().
  */
 function ppp_legacy_theme() {
-  return array(
-    'ppp_post_sidebar' => array(
+  return [
+    'ppp_post_sidebar' => [
       'template' => 'ppp_legacy_post_sidebar',
-      'variables' => array('user' => NULL),
-    ),
-    'ppp_post_body' => array(
+      'variables' => ['user' => NULL],
+    ],
+    'ppp_post_body' => [
       'template' => 'ppp_legacy_post_body',
-      'variables' => array('user' => NULL, 'post' => NULL, 'in_topic' => TRUE),
-    ),
-  );
+      'variables' => ['user' => NULL, 'post' => NULL, 'in_topic' => TRUE],
+    ],
+  ];
 }
 
 /**
  * Determine whether a user has access to a forum.
  */
 function _ppp_legacy_access($forum) {
-  return (!in_array($forum, variable_get('ppp_legacy_classified_fora', array())) || user_access('read classified content'));
+  return (!in_array($forum, variable_get('ppp_legacy_classified_fora', [])) || user_access('read classified content'));
 }
 
 function ppp_legacy_filter_info() {
-  $filters['linebreaks'] = array(
+  $filters['linebreaks'] = [
     'title' => t('Render linebreaks'),
     'description' => t('A filter that avoids the core shenanigans.'),
     'process callback' => '_ppp_legacy_filter_linebreaks',
-  );
+  ];
   return $filters;
 }
 
@@ -99,11 +99,11 @@ function _ppp_legacy_filter_linebreaks($text) {
 }
 
 function ppp_legacy_xbbcode_info() {
-  $tags['quote'] = array(
+  $tags['quote'] = [
     'description' => t('UBB-style quote tag'),
     'callback' => '_ppp_legacy_xbbcode_quote',
     'sample' => '[quote]Originally written by Arancaytar:[b]He who quotes himself is a fool.[/b][/quote]',
-  );
+  ];
   return $tags;
 }
 

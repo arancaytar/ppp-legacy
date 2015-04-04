@@ -14,25 +14,25 @@ function _ppp_legacy_admin($form, &$form_state) {
   while ($forum = $fora->fetch()) {
     $options[$forum->fid] = $forum->name;
   }
-  $form['ppp_legacy_classified_fora'] = array(
+  $form['ppp_legacy_classified_fora'] = [
     '#type' => 'checkboxes',
     '#title' => t('Classified fora'),
     '#description' => t('Access to these fora is granted only by special permission.'),
     '#options' => $options,
-    '#default_value' => variable_get('ppp_legacy_classified_fora', array()),
-  );
+    '#default_value' => variable_get('ppp_legacy_classified_fora', []),
+  ];
 
-  $options = array();
+  $options = [];
   foreach (filter_formats() as $id => $format) {
     $options[$id] = $format->name;
   }
-  $form['ppp_legacy_post_format'] = array(
+  $form['ppp_legacy_post_format'] = [
     '#type' => 'select',
     '#title' => t('Text format'),
     '#description' => t('The format all posts will be rendered in.'),
     '#options' => $options,
     '#default_value' => variable_get('ppp_legacy_post_format', 'xbbcode'),
-  );
+  ];
   return system_settings_form($form);
 }
 

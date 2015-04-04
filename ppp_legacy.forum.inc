@@ -18,72 +18,72 @@ function _ppp_legacy_page_forum($fid) {
   }
 
   drupal_set_title(_ppp_legacy_title_forum($fid));
-  drupal_set_breadcrumb(array(
+  drupal_set_breadcrumb([
     l(t('Home'), '<front>'),
-  ));
+  ]);
 
-  $page = array(
-    'description' => array(
+  $page = [
+    'description' => [
       '#markup' => $forum->description,
-    ),
-    'pager_top' => array(
+    ],
+    'pager_top' => [
       '#theme' => 'pager',
-    ),
-    'topics' => array(
+    ],
+    'topics' => [
       '#theme' => 'table',
       '#sticky' => FALSE,
-      '#attributes' => array(
-        'class' => array('ppp-topics-table'),
-      ),
-      '#header' => array(
-        'id' => array(
+      '#attributes' => [
+        'class' => ['ppp-topics-table'],
+      ],
+      '#header' => [
+        'id' => [
           'data' => t('#'),
           'field' => 'tid',
-        ),
-        'title' => array(
+        ],
+        'title' => [
           'data' => t('Topic'),
           'field' => 'title',
-        ),
-        'author' => array(
+        ],
+        'author' => [
           'data' => t('Topic Starter'),
           'field' => 'author_pdn',
-        ),
-        'length' => array(
+        ],
+        'length' => [
           'data' => t('Posts'),
           'field' => 'length',
-        ),
-        'ended' => array(
+        ],
+        'ended' => [
           'data' => t('Last post'),
           'field' => 'ended',
           'sort' => 'desc',
-        ),
-      ),
-      '#rows' => array(),
-    ),
-    'pager_bottom' => array(
+        ],
+      ],
+      '#rows' => [],
+    ],
+    'pager_bottom' => [
       '#theme' => 'pager',
-    ),
-  );
+    ],
+  ];
   
   $topics = ppp_legacy_load_topics_pager($fid, $page['topics']['#header'], TOPICS_PER_PAGE);
   foreach ($topics as $topic) {
     $query = db_select('ppp_post', 'p');
     $query->join('ppp_user', 'u', 'p.author = u.uid');
-    $page['topics']['#rows'][$topic->tid] = array(
-      'id' => array(
+    $page['topics']['#rows'][$topic->tid] = [
+      'id' => [
         'data' => $topic->tid,
-        'class' => array('numeric-field'),
-      ),
+        'class' => ['numeric-field'],
+      ],
       'title' => l($topic->title, "topic/$fid/{$topic->tid}"),
       'author' => l($topic->author_pdn, 'member/' . $topic->author),
-      'length' => array(
+      'length' => [
         'data' => $topic->length,
-        'class' => array('numeric-field'),
-      ),
-      'ended' => array(
+        'class' => ['numeric-field'],
+      ],
+      'ended' => [
         'data' => format_date($topic->ended, 'custom', 'F d, Y <\sp\a\n \c\l\a\s\s="\t\i\m\e">H:i</\sp\a\n>'),
-      ),
-    );
+      ],
+    ];
   }
 
   return $page;

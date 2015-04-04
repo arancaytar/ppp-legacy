@@ -11,13 +11,13 @@
 function ppp_legacy_load_forum($fid) {
   $data = &drupal_static(__FUNCTION__);
   if (!isset($data[$fid])) {
-    $data[$fid] = db_query('SELECT name, description FROM {ppp_forum} WHERE fid = :fid', array(':fid' => $fid))->fetch();
+    $data[$fid] = db_query('SELECT name, description FROM {ppp_forum} WHERE fid = :fid', [':fid' => $fid])->fetch();
   }
   return $data[$fid];
 }
 
 function ppp_legacy_load_fora($category) {
-  $query = db_query('SELECT fid, name, description, topics, posts, lastpost_author, lastpost_author_pdn, lastpost_icon, lastpost_topic, lastpost_topic_title, lastpost_date FROM {ppp_forum} WHERE category = :category ORDER BY position', array(':category' => $category));
+  $query = db_query('SELECT fid, name, description, topics, posts, lastpost_author, lastpost_author_pdn, lastpost_icon, lastpost_topic, lastpost_topic_title, lastpost_date FROM {ppp_forum} WHERE category = :category ORDER BY position', [':category' => $category]);
   while ($forum = $query->fetch()) {
     $fora[$forum->fid] = $forum;
   }
@@ -35,10 +35,10 @@ function ppp_legacy_load_topics_pager($fid, $header, $limit) {
   $query = db_select('ppp_topic')->extend('PagerDefault')->extend('TableSort');
   $query->condition('fid', $fid);
   $query->limit($limit);
-  $query->fields('ppp_topic', array('tid', 'title', 'author', 'author_pdn', 'length', 'ended'));
+  $query->fields('ppp_topic', ['tid', 'title', 'author', 'author_pdn', 'length', 'ended']);
   $query->orderByHeader($header);
   $result = $query->execute();
-  $topics = array();
+  $topics = [];
   while ($row = $result->fetch()) {
     $topics[$row->tid] = $row;
   }
@@ -48,19 +48,19 @@ function ppp_legacy_load_topics_pager($fid, $header, $limit) {
 function ppp_legacy_load_topic($fid, $tid) {
   $data = &drupal_static(__FUNCTION__);
   if (!isset($data["$fid-$tid"])) {
-    $data["$fid-$tid"] = db_query('SELECT tid, title, author, author_pdn, length, ended FROM {ppp_topic} WHERE fid = :fid AND tid = :tid', array(':fid' => $fid, ':tid' => $tid))->fetch();
+    $data["$fid-$tid"] = db_query('SELECT tid, title, author, author_pdn, length, ended FROM {ppp_topic} WHERE fid = :fid AND tid = :tid', [':fid' => $fid, ':tid' => $tid])->fetch();
   }
   return $data["$fid-$tid"];
 }
 
 function ppp_legacy_load_posts_pager($fid, $tid, $start, $limit) {
-  $query = db_select('ppp_post')->fields('ppp_post', array('pid', 'author', 'author_pdn', 'post_date', 'body', 'icon', 'edit_date', 'edit_name'));
+  $query = db_select('ppp_post')->fields('ppp_post', ['pid', 'author', 'author_pdn', 'post_date', 'body', 'icon', 'edit_date', 'edit_name']);
   $query->condition('fid', $fid);
   $query->condition('tid', $tid);
   $query->orderBy('pid', 'asc');
   $query->range($start, $limit);
   $result = $query->execute();
-  $posts = array();
+  $posts = [];
   while ($row = $result->fetch()) {
     $row->body = html_entity_decode($row->body, ENT_COMPAT, "UTF-8");
     $posts[$row->pid] = $row;
@@ -70,12 +70,12 @@ function ppp_legacy_load_posts_pager($fid, $tid, $start, $limit) {
 
 function ppp_legacy_load_posts_user($uid) {
   $query = db_select('ppp_post')->extend('PagerDefault');
-  $query->fields('ppp_post', array('fid', 'tid', 'pid', 'author', 'author_pdn', 'post_date', 'body', 'icon', 'edit_date', 'edit_name'));
+  $query->fields('ppp_post', ['fid', 'tid', 'pid', 'author', 'author_pdn', 'post_date', 'body', 'icon', 'edit_date', 'edit_name']);
   $query->condition('author', $uid);
   $query->orderBy('post_date', 'DESC');
   $query->limit(25);
   $result = $query->execute();
-  $posts = array();
+  $posts = [];
   while ($row = $result->fetch()) {
     $row->body = html_entity_decode($row->body, ENT_COMPAT, "UTF-8");
     $posts[] = $row;
@@ -86,9 +86,9 @@ function ppp_legacy_load_posts_user($uid) {
 
 function ppp_legacy_load_user($uid) {
   $data = &drupal_static(__FUNCTION__);
-  $data[0] = (object) array('uid' => 0, 'pdn' => '-', 'title' => '', 'homepage' => '', 'joined' => 0, 'posts' => 0);
+  $data[0] = (object) ['uid' => 0, 'pdn' => '-', 'title' => '', 'homepage' => '', 'joined' => 0, 'posts' => 0];
   if (!isset($data[$uid])) {
-    $data[$uid] = db_query('SELECT uid, pdn, title, posts, homepage, joined FROM {ppp_user} WHERE uid = :uid', array(':uid' => $uid))->fetch();
+    $data[$uid] = db_query('SELECT uid, pdn, title, posts, homepage, joined FROM {ppp_user} WHERE uid = :uid', [':uid' => $uid])->fetch();
   }
   return $data[$uid] ? $data[$uid] : $data[0];
 }

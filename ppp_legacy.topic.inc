@@ -19,40 +19,40 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   }
 
   drupal_set_title(_ppp_legacy_title_topic($fid, $tid));
-  drupal_set_breadcrumb(array(
+  drupal_set_breadcrumb([
     l(t('Home'), '<front>'),
     l($forum->name, "forum/$fid"),
-  ));  
+  ]);  
 
   $page = preg_match('/^p(\d+)$/', $page, $_) ? $_[1] - 1 : 0;
   $posts = ppp_legacy_load_posts_pager($fid, $tid, $page * POSTS_PER_PAGE, POSTS_PER_PAGE);
   $pager = _ppp_legacy_topic_pager($fid, $tid, ceil($topic->length / POSTS_PER_PAGE), $page);
   
-  $page = array(
+  $page = [
     'pager_top' => $pager,
-    'topic' => array(
+    'topic' => [
       '#theme' => 'table',
       '#sticky' => FALSE,
-      '#header' => array(t('Author'), t('Topic: @title', array('@title' => $topic->title))),
-      '#rows' => array(),
-      '#attributes' => array('class' => array('topic-table')),
-    ),
+      '#header' => [t('Author'), t('Topic: @title', ['@title' => $topic->title])],
+      '#rows' => [],
+      '#attributes' => ['class' => ['topic-table']],
+    ],
     'pager_bottom' => $pager,
-  );
+  ];
 
   foreach ($posts as $pid => $post) {
-    $page['topic']['#rows'][$pid] = array(
-      'sidebar' => array(
-        'data' => theme('ppp_post_sidebar', array(
+    $page['topic']['#rows'][$pid] = [
+      'sidebar' => [
+        'data' => theme('ppp_post_sidebar', [
           'user' => ppp_legacy_load_user($post->author),
-        )),
-      ),
-      'body' => theme('ppp_post_body', array(
+        ]),
+      ],
+      'body' => theme('ppp_post_body', [
         'post' => $post,
         'user' => ppp_legacy_load_user($post->author),
         'in_topic' => TRUE,
-      )),
-    );
+      ]),
+    ];
   }
   return $page;
 }
@@ -67,10 +67,10 @@ function _ppp_legacy_title_topic($fid, $tid) {
 
 function _ppp_legacy_topic_pager($fid, $tid, $pages, $page) {
   if ($pages > 1) {
-    $pager = array(
+    $pager = [
       '#prefix' => '<h2 class="element-invisible">Pages</h2><div class="item-list"><ul class="pager">',
       '#suffix' => '</ul></div>',
-    );
+    ];
     for ($i = 1; $i <= $pages; $i++) {
       if ($i == $page + 1) {
         $pager["page_$i"]['#markup'] = '<li class="pager-current">' . $i . '</li>';
