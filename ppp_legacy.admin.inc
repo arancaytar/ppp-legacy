@@ -22,6 +22,13 @@ function _ppp_legacy_admin($form, &$form_state) {
     '#default_value' => variable_get('ppp_legacy_classified_fora', []),
   ];
 
+  $form['ppp_legacy_classified_users'] = [
+    '#type' => 'textarea',
+    '#title' => t('Classified users'),
+    '#description' => t('Enter one user ID per line.'),
+    '#default_value' => variable_get('ppp_legacy_classified_users', ''),
+  ];
+
   $options = [];
   foreach (filter_formats() as $id => $format) {
     $options[$id] = $format->name;

@@ -27,7 +27,12 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   $page = preg_match('/^p(\d+)$/', $page, $_) ? $_[1] - 1 : 0;
   $posts = ppp_legacy_load_posts_pager($fid, $tid, $page * POSTS_PER_PAGE, POSTS_PER_PAGE);
   $pager = _ppp_legacy_topic_pager($fid, $tid, ceil($topic->length / POSTS_PER_PAGE), $page);
-  
+
+  // Topic starter covers the whole topic.
+  if (!_ppp_legacy_access_user($posts[0]->author)) {
+    return MENU_ACCESS_DENIED;
+  }
+
   $page = [
     'pager_top' => $pager,
     'topic' => [
@@ -41,6 +46,13 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   ];
 
   foreach ($posts as $pid => $post) {
+    if (!_ppp_legacy_access_user($post->author)) {
+      $page['topic']['#rows'][$pid] = [
+       'sidebar' => ['data' => ''],
+       'body' => t('<em>This post has been removed from the archive.</em>'),
+      ];
+      continue;
+    }
     $page['topic']['#rows'][$pid] = [
       'sidebar' => [
         'data' => theme('ppp_post_sidebar', [

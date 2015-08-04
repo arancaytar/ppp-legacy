@@ -43,7 +43,8 @@ function ppp_legacy_menu() {
     'title arguments' => [1],
     'page callback' => '_ppp_legacy_page_user',
     'page arguments' => [1],
-    'access arguments' => ['access content'],
+    'access callback' => '_ppp_legacy_access_user',
+    'access arguments' => [1],
     'file' => 'ppp_legacy.user.inc',
     'type' => MENU_CALLBACK,
   ];
@@ -82,6 +83,14 @@ function ppp_legacy_theme() {
  */
 function _ppp_legacy_access($forum) {
   return (!in_array($forum, variable_get('ppp_legacy_classified_fora', [])) || user_access('read classified content'));
+}
+
+function _ppp_legacy_access_user($uid) {
+  $uids =& drupal_static(__FUNCTION__);
+  if (!isset($uids)) {
+    $uids = explode("\n", variable_get('ppp_legacy_classified_users', ''));
+  }
+  return (!in_array($uid, $uids) || user_access('read classified content'));
 }
 
 function ppp_legacy_filter_info() {
