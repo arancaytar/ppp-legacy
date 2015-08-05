@@ -29,7 +29,7 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   $pager = _ppp_legacy_topic_pager($fid, $tid, ceil($topic->length / POSTS_PER_PAGE), $page);
 
   // Topic starter covers the whole topic.
-  if (!_ppp_legacy_access_user($posts[0]->author)) {
+  if (!_ppp_legacy_access_user($topic->author)) {
     return MENU_ACCESS_DENIED;
   }
 
@@ -48,7 +48,7 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   foreach ($posts as $pid => $post) {
     if (!_ppp_legacy_access_user($post->author)) {
       $page['topic']['#rows'][$pid] = [
-       'sidebar' => ['data' => ''],
+       'sidebar' => [],
        'body' => t('<em>This post has been removed from the archive.</em>'),
       ];
       continue;

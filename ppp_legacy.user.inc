@@ -52,6 +52,13 @@ function _ppp_legacy_page_user($uid) {
       continue;
     }
     $topic = ppp_legacy_load_topic($post->fid, $post->tid);
+    if (!_ppp_legacy_access_user($topic->author)) {
+      $page['posts']['#rows'][] = [
+        'sidebar' => [],
+        'body' => t('<em>This post has been removed from the archive.</em>'),
+      ];
+      continue;
+    }
     $forum = ppp_legacy_load_forum($post->fid);
     $link = 'topic/' . $post->fid . '/' . $post->tid;
     if ($post->pid >= 25) {

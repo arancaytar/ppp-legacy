@@ -67,6 +67,13 @@ function _ppp_legacy_page_forum($fid) {
   
   $topics = ppp_legacy_load_topics_pager($fid, $page['topics']['#header'], TOPICS_PER_PAGE);
   foreach ($topics as $topic) {
+    if (!_ppp_legacy_access_user($topic->author)) {
+      $page['topics']['#rows'][$topic->tid] = [[
+        'colspan' => 5,
+        'data' => t('<em>This topic has been removed from the archive.</em>'),
+      ]];
+      continue;
+    }
     $query = db_select('ppp_post', 'p');
     $query->join('ppp_user', 'u', 'p.author = u.uid');
     $page['topics']['#rows'][$topic->tid] = [
