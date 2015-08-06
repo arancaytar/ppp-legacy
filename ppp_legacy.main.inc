@@ -10,7 +10,7 @@
  */
 function _ppp_legacy_page_main() {
   module_load_include('inc', 'ppp_legacy', 'ppp_legacy.crud');
-  
+
   $categories = [1 => "Spiderweb's General Boards", 2 => "Spiderweb's Game Boards"];
   $fora[1] = ppp_legacy_load_fora(1);
   $fora[2] = ppp_legacy_load_fora(2);

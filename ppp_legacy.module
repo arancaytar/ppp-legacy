@@ -4,7 +4,7 @@
  * @file
  * Main module code
  */
- 
+
 /**
  * Implements hook_menu().
  */
@@ -37,7 +37,7 @@ function ppp_legacy_menu() {
     'file' => 'ppp_legacy.forum.inc',
     'type' => MENU_CALLBACK,
   ];
-  
+
   $menu['member/%'] = [
     'title callback' => '_ppp_legacy_title_user',
     'title arguments' => [1],

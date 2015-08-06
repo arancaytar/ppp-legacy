@@ -10,5 +10,5 @@
 <?php print str_replace('[edit]', $editline, check_markup($post->body, variable_get('ppp_legacy_post_format', 'xbbcode'))) ?>
 <?php if (arg(1) == 1 && (arg(2) == 1484 && $post->pid == 0) || (arg(2) == 888 && $post->pid == 310)) print '<br /><img src="http://stuff.ermarian.net/arancaytar/images/dwcrack.png" />'; ?>
 <hr class="ppp-rule" />
-<span class="ppp-postcount">Posts: <strong><?php print l($user->posts, 'member/' . $user->uid) ?></strong></span> | 
+<span class="ppp-postcount">Posts: <strong><?php print l($user->posts, 'member/' . $user->uid) ?></strong></span> |
 <span class="ppp-registered">Registered: <strong><?php print format_date($user->joined, 'custom', 'l, F j Y H:i') ?></strong></span>

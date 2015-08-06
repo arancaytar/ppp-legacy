@@ -4,7 +4,7 @@
  * @file
  * Callbacks related to the user page.
  */
- 
+
 /**
  * Page callback for the user profile
  */
@@ -14,7 +14,7 @@ function _ppp_legacy_page_user($uid) {
   if (!$user) {
     return MENU_NOT_FOUND;
   }
- 
+
   drupal_set_title(_ppp_legacy_title_user($uid));
   $posts = ppp_legacy_load_posts_user($uid);
   $page['profile'] = [
@@ -32,11 +32,11 @@ function _ppp_legacy_page_user($uid) {
       [t('Registered'), format_date($user->joined, 'custom', 'l, F j Y H:i')],
     ],
   ];
-  
+
   $page['mid']['#markup'] = '<hr /><h3 id="posts">Recent posts</h3>';
-  
+
   $page['pager_top'] = ['#theme' => 'pager'];
-  
+
   $page['posts'] = [
     '#theme' => 'table',
     '#sticky' => FALSE,
@@ -44,7 +44,7 @@ function _ppp_legacy_page_user($uid) {
     '#rows' => [],
     '#attributes' => ['class' => ['topic-table']],
   ];
-  
+
   $page['pager_bottom'] = ['#theme' => 'pager'];
 
   foreach ($posts as $post) {

@@ -22,7 +22,7 @@ function _ppp_legacy_page_topic($fid, $tid, $page = 'p1') {
   drupal_set_breadcrumb([
     l(t('Home'), '<front>'),
     l($forum->name, "forum/$fid"),
-  ]);  
+  ]);
 
   $page = preg_match('/^p(\d+)$/', $page, $_) ? $_[1] - 1 : 0;
   $posts = ppp_legacy_load_posts_pager($fid, $tid, $page * POSTS_PER_PAGE, POSTS_PER_PAGE);

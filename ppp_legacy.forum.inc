@@ -4,7 +4,7 @@
  * @file
  * Callbacks related to the forum page.
  */
- 
+
 define('TOPICS_PER_PAGE', 25);
 
 /**
@@ -64,7 +64,7 @@ function _ppp_legacy_page_forum($fid) {
       '#theme' => 'pager',
     ],
   ];
-  
+
   $topics = ppp_legacy_load_topics_pager($fid, $page['topics']['#header'], TOPICS_PER_PAGE);
   foreach ($topics as $topic) {
     if (!_ppp_legacy_access_user($topic->author)) {
