@@ -83,7 +83,13 @@ function ppp_legacy_theme() {
  * Determine whether a user has access to a forum.
  */
 function _ppp_legacy_access($forum) {
-  return (!in_array($forum, variable_get('ppp_legacy_classified_fora', [])) || user_access('read classified content'));
+  $classified = in_array($forum, variable_get('ppp_legacy_classified_fora', []));
+  if (!$classified) return TRUE;
+  if (user_access('read classified content')) {
+    drupal_set_message(t('Viewing classified content.', 'error');
+    return TRUE;
+  }
+  return FALSE;
 }
 
 function _ppp_legacy_access_user($uid) {
@@ -91,7 +97,12 @@ function _ppp_legacy_access_user($uid) {
   if (!isset($uids)) {
     $uids = explode("\n", variable_get('ppp_legacy_classified_users', ''));
   }
-  return (!in_array($uid, $uids) || user_access('read classified content'));
+  if (!in_array($uid, $uids)) return TRUE;
+  if (user_access('read classified content')) {
+    drupal_set_message(t('Viewing classified content.', 'error');
+    return TRUE;
+  }
+  return FALSE;
 }
 
 function ppp_legacy_filter_info() {
