@@ -57,6 +57,7 @@ function ppp_legacy_menu() {
     'page arguments' => ['_ppp_legacy_admin'],
     'access arguments' => ['administer site configuration'],
     'file' => 'ppp_legacy.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
   ];
 
   return $menu;
