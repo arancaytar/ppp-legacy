@@ -86,7 +86,7 @@ function _ppp_legacy_access($forum) {
   $classified = in_array($forum, variable_get('ppp_legacy_classified_fora', []));
   if (!$classified) return TRUE;
   if (user_access('read classified content')) {
-    drupal_set_message(t('Viewing classified content.', 'error');
+    drupal_set_message(t('Viewing classified content.'), 'error');
     return TRUE;
   }
   return FALSE;
@@ -99,7 +99,7 @@ function _ppp_legacy_access_user($uid) {
   }
   if (!in_array($uid, $uids)) return TRUE;
   if (user_access('read classified content')) {
-    drupal_set_message(t('Viewing classified content.', 'error');
+    drupal_set_message(t('Viewing classified content.'), 'error');
     return TRUE;
   }
   return FALSE;
