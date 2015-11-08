@@ -95,8 +95,9 @@ function _ppp_legacy_access($forum) {
 function _ppp_legacy_access_user($uid) {
   $uids =& drupal_static(__FUNCTION__);
   if (!isset($uids)) {
-    $uids = explode("\n", variable_get('ppp_legacy_classified_users', ''));
+    $uids = preg_split('/\s+/', variable_get('ppp_legacy_classified_users', ''));
   }
+
   if (!in_array($uid, $uids)) return TRUE;
   if (user_access('read classified content')) {
     drupal_set_message(t('Viewing classified content.'), 'error');
