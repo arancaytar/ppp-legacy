@@ -6,64 +6,6 @@
  */
 
 /**
- * Implements hook_menu().
- */
-function ppp_legacy_menu() {
-  $menu['archives'] = [
-    'title' => 'Archives',
-    'page callback' => '_ppp_legacy_page_main',
-    'file' => 'ppp_legacy.main.inc',
-    'access arguments' => ['access content'],
-  ];
-
-  $menu['topic/%/%'] = [
-    'title callback' => '_ppp_legacy_title_topic',
-    'title arguments' => [1, 2],
-    'page callback' => '_ppp_legacy_page_topic',
-    'page arguments' => [1, 2],
-    'access callback' => '_ppp_legacy_access',
-    'access arguments' => [1],
-    'file' => 'ppp_legacy.topic.inc',
-    'type' => MENU_CALLBACK,
-  ];
-
-  $menu['forum/%'] = [
-    'title callback' => '_ppp_legacy_title_forum',
-    'title arguments' => [1],
-    'page callback' => '_ppp_legacy_page_forum',
-    'page arguments' => [1],
-    'access callback' => '_ppp_legacy_access',
-    'access arguments' => [1],
-    'file' => 'ppp_legacy.forum.inc',
-    'type' => MENU_CALLBACK,
-  ];
-
-  $menu['member/%'] = [
-    'title callback' => '_ppp_legacy_title_user',
-    'title arguments' => [1],
-    'page callback' => '_ppp_legacy_page_user',
-    'page arguments' => [1],
-    'access callback' => '_ppp_legacy_access_user',
-    'access arguments' => [1],
-    'file' => 'ppp_legacy.user.inc',
-    'type' => MENU_CALLBACK,
-  ];
-
-  $menu['admin/config/ppp'] = [
-    'title' => 'PPP Archive',
-    'description' => 'Settings related to the Pied Piper Project',
-    'position' => 'right',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => ['_ppp_legacy_admin'],
-    'access arguments' => ['administer site configuration'],
-    'file' => 'ppp_legacy.admin.inc',
-    'type' => MENU_NORMAL_ITEM,
-  ];
-
-  return $menu;
-}
-
-/**
  * Implements hook_theme().
  */
 function ppp_legacy_theme() {

@@ -1,0 +1,43 @@
+ppp_legacy.archive:
+  path: '/archive'
+  defaults:
+    _controller: \Drupal\ppp_legacy\Controller\Archive::content
+    _title: Archive
+  requirements:
+    _permission: 'access content'
+
+ppp_legacy.topic:
+  path: '/topic/{forum}/{topic}'
+  defaults:
+    _controller: \Drupal\ppp_legacy\Controller\Topic::content
+    _title_callback: \Drupal\ppp_legacy\Controller\Topic::title
+  requirements:
+    _permission: 'access content'
+    _custom_access: \Drupal\ppp_legacy\Controller\Topic::access
+
+ppp_legacy.forum:
+  path: '/forum/{forum}'
+  defaults:
+    _controller: \Drupal\ppp_legacy\Controller\Forum::content
+    _title_callback: \Drupal\ppp_legacy\Controller\Forum::title
+  requirements:
+    _permission: 'access content'
+    _custom_access: \Drupal\ppp_legacy\Controller\Forum::access
+
+ppp_legacy.member:
+  path: '/member/{member}'
+  defaults:
+    _controller: \Drupal\ppp_legacy\Controller\Member::content
+    _title_callback: \Drupal\ppp_legacy\Controller\Member::title
+  requirements:
+    _permission: 'access content'
+    _custom_access: \Drupal\ppp_legacy\Controller\Member::access
+
+ppp_legacy.settings:
+  path: '/admin/config/ppp'
+  description: 'Settings related to the Pied Piper Project'
+  defaults:
+    _title: 'PPP Archive'
+    _form: \Drupal\ppp_legacy\Form\SettingsForm
+  requirements:
+    _permission: 'administer site configuration'
