@@ -11,11 +11,9 @@
 function ppp_legacy_theme() {
   return [
     'ppp_post_sidebar' => [
-      'template' => 'ppp_legacy_post_sidebar',
       'variables' => ['user' => NULL],
     ],
     'ppp_post_body' => [
-      'template' => 'ppp_legacy_post_body',
       'variables' => ['user' => NULL, 'post' => NULL, 'in_topic' => TRUE],
     ],
   ];
