@@ -5,9 +5,10 @@
  * Contains \Drupal\ppp_legacy\Entity\Forum.
  */
 
-namespace Drupal\ppp_legacy\Entity\Forum;
+namespace Drupal\ppp_legacy\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
+use Drupal\ppp_legacy\ForumInterface;
 
 /**
  * Represent a forum in the archive.

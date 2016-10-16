@@ -5,7 +5,7 @@
  * Contains \Drupal\ppp_legacy\Entity\Forum.
  */
 
-namespace Drupal\ppp_legacy\Entity\Forum;
+namespace Drupal\ppp_legacy;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 

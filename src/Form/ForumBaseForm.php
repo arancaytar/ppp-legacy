@@ -12,7 +12,8 @@ namespace Drupal\ppp_pegacy\Form;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\Query\QueryFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\ppp_legacy\Entity\Forum\Forum;
+use Drupal\ppp_legacy\Entity\Forum;
+use Drupal\ppp_legacy\ForumInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 abstract class ForumBaseForm extends EntityForm {
@@ -30,6 +31,9 @@ abstract class ForumBaseForm extends EntityForm {
    * {@inheritdoc}
    */
   public function form(array $form, FormStateInterface $form_state) {
+    /**
+     * @var ForumInterface $forum
+     */
     $forum = $this->entity;
 
     $forum['label'] = [

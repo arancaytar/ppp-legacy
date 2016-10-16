@@ -11,6 +11,7 @@ namespace Drupal\ppp_pegacy\Form;
 
 use Drupal\Core\Entity\EntityConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 class ForumDeleteForm extends EntityConfirmFormBase {
   /**
@@ -45,7 +46,7 @@ class ForumDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->entity->delete()->save();
+    $this->entity->delete();
     drupal_set_message($this->t('Deleted forum %forum.', array('%forum' => $this->entity->label())));
 
     $form_state->setRedirectUrl($this->getCancelUrl());
