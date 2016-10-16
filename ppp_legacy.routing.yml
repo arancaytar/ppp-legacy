@@ -41,3 +41,31 @@ ppp_legacy.settings:
     _form: \Drupal\ppp_legacy\Form\SettingsForm
   requirements:
     _permission: 'administer site configuration'
+
+ppp_legacy.admin.forums:
+  path: /admin/config/content/ppp
+  defaults:
+    _entity_list: ppp_forum
+  requirements:
+    _permission: administer PPP forums
+
+ppp_legacy.admin.forums.add:
+  path: /admin/config/content/ppp/add
+  defaults:
+    _entity_form: ppp_forum.add
+  requirements:
+    _permission: administer PPP forums
+
+ppp_legacy.admin.forums.edit:
+  path: /admin/config/content/ppp/manage/{ppp_forum}/edit
+  defaults:
+    _entity_form: ppp_forum.edit
+  requirements:
+    _permission: administer PPP forums
+
+ppp_legacy.admin.forums.delete:
+  path: /admin/config/content/ppp/manage/{ppp_forum}/delete
+  defaults:
+    _entity_form: ppp_forum.delete
+  requirements:
+    _permission: administer PPP forums
