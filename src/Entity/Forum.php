@@ -23,7 +23,7 @@ use Drupal\ppp_legacy\ForumInterface;
  *       "delete" = "Drupal\ppp_legacy\Form\ForumDeleteForm",
  *     },
  *     "list_builder" = "Drupal\ppp_legacy\ForumListBuilder",
- *     "access" = "Drupal\ppp_legacy\ForumAccessHandler"
+ *     "access" = "Drupal\ppp_legacy\ArchivedEntityAccessHandler"
  *   },
  *   config_prefix = "forum",
  *   admin_permission = "administer PPP forums",

@@ -1,9 +1,8 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: christoph
- * Date: 16.10.16
- * Time: 00:42
+ * @file
+ * Contains \Drupal\ppp_pegacy\Form\ForumBaseForm.
  */
 
 namespace Drupal\ppp_pegacy\Form;

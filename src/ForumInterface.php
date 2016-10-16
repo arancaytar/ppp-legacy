@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Contains \Drupal\ppp_legacy\Entity\Forum.
+ * Contains \Drupal\ppp_legacy\Entity\ForumInterface.
  */
 
 namespace Drupal\ppp_legacy;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 
-interface ForumInterface extends ConfigEntityInterface  {
+interface ForumInterface extends ConfigEntityInterface, ArchivedEntityInterface  {
   /**
    * @return integer
    */
@@ -19,9 +19,4 @@ interface ForumInterface extends ConfigEntityInterface  {
    * @return string
    */
   public function getDescription();
-
-  /**
-   * @return boolean
-   */
-  public function isClassified();
 }
