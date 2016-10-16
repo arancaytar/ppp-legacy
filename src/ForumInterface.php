@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\ppp_legacy\Entity\ForumInterface.
+ * Contains \Drupal\ppp\Entity\ForumInterface.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 

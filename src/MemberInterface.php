@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\MemberInterface.
+ * Contains \Drupal\ppp\MemberInterface.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 
 use Drupal\Core\Entity\ContentEntityInterface;

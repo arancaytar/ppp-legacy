@@ -1,69 +1,69 @@
-ppp_legacy.archive:
+ppp.archive:
   path: '/archive'
   defaults:
-    _controller: \Drupal\ppp_legacy\Controller\Archive::content
+    _controller: \Drupal\ppp\Controller\Archive::content
     _title: Archive
   requirements:
     _permission: 'access content'
 
-ppp_legacy.topic:
+ppp.topic:
   path: '/topic/{forum}/{topic}'
   defaults:
-    _controller: \Drupal\ppp_legacy\Controller\Topic::content
-    _title_callback: \Drupal\ppp_legacy\Controller\Topic::title
+    _controller: \Drupal\ppp\Controller\Topic::content
+    _title_callback: \Drupal\ppp\Controller\Topic::title
   requirements:
     _permission: 'access content'
-    _custom_access: \Drupal\ppp_legacy\Controller\Topic::access
+    _custom_access: \Drupal\ppp\Controller\Topic::access
 
-ppp_legacy.forum:
+ppp.forum:
   path: '/forum/{forum}'
   defaults:
-    _controller: \Drupal\ppp_legacy\Controller\Forum::content
-    _title_callback: \Drupal\ppp_legacy\Controller\Forum::title
+    _controller: \Drupal\ppp\Controller\Forum::content
+    _title_callback: \Drupal\ppp\Controller\Forum::title
   requirements:
     _permission: 'access content'
-    _custom_access: \Drupal\ppp_legacy\Controller\Forum::access
+    _custom_access: \Drupal\ppp\Controller\Forum::access
 
-ppp_legacy.member:
+ppp.member:
   path: '/member/{member}'
   defaults:
-    _controller: \Drupal\ppp_legacy\Controller\Member::content
-    _title_callback: \Drupal\ppp_legacy\Controller\Member::title
+    _controller: \Drupal\ppp\Controller\Member::content
+    _title_callback: \Drupal\ppp\Controller\Member::title
   requirements:
     _permission: 'access content'
-    _custom_access: \Drupal\ppp_legacy\Controller\Member::access
+    _custom_access: \Drupal\ppp\Controller\Member::access
 
-ppp_legacy.settings:
+ppp.settings:
   path: '/admin/config/ppp'
   description: 'Settings related to the Pied Piper Project'
   defaults:
     _title: 'PPP Archive'
-    _form: \Drupal\ppp_legacy\Form\SettingsForm
+    _form: \Drupal\ppp\Form\SettingsForm
   requirements:
     _permission: 'administer site configuration'
 
-ppp_legacy.admin.forums:
+ppp.admin.forums:
   path: /admin/config/content/ppp
   defaults:
     _entity_list: ppp_forum
   requirements:
     _permission: administer PPP forums
 
-ppp_legacy.admin.forums.add:
+ppp.admin.forums.add:
   path: /admin/config/content/ppp/add
   defaults:
     _entity_form: ppp_forum.add
   requirements:
     _permission: administer PPP forums
 
-ppp_legacy.admin.forums.edit:
+ppp.admin.forums.edit:
   path: /admin/config/content/ppp/manage/{ppp_forum}/edit
   defaults:
     _entity_form: ppp_forum.edit
   requirements:
     _permission: administer PPP forums
 
-ppp_legacy.admin.forums.delete:
+ppp.admin.forums.delete:
   path: /admin/config/content/ppp/manage/{ppp_forum}/delete
   defaults:
     _entity_form: ppp_forum.delete

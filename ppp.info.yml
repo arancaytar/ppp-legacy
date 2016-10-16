@@ -1,6 +1,7 @@
-name: PPP Legacy Archives
-description: This module displays the old archive of PPP1-4
+name: Pied Piper Project
+description: The PPP forum archive.
 
 core: 8.x
+package: PPP
 dependencies:
   - xbbcode

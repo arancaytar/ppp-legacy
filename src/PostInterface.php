@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\PostInterface.
+ * Contains \Drupal\ppp\PostInterface.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 
 use Drupal\Core\Entity\ContentEntityInterface;

@@ -2,17 +2,17 @@
 
 /**
  * @file
- * Contains \Drupal\ppp_legacy\ForumAccessHandler.
+ * Contains \Drupal\ppp\ForumAccessHandler.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityAccessControlHandler;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\ppp_legacy\Entity\Forum;
+use Drupal\ppp\Entity\Forum;
 
 /**
  * {@inheritdoc}

@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\ArchivedEntityInterface.
+ * Contains \Drupal\ppp\ArchivedEntityInterface.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 
 use Drupal\Core\Entity\EntityInterface;
@@ -12,7 +12,7 @@ use Drupal\Core\Entity\EntityInterface;
 /**
  * A common interface for archived antities. All such entities may be marked as
  * classified.
- * @package Drupal\ppp_legacy
+ * @package Drupal\ppp
  */
 interface ArchivedEntityInterface extends EntityInterface {
   /**

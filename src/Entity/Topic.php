@@ -1,14 +1,14 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\Entity\Topic.
+ * Contains \Drupal\ppp\Entity\Topic.
  */
 
-namespace Drupal\ppp_legacy\Entity;
+namespace Drupal\ppp\Entity;
 
 
 use Drupal\Core\Entity\ContentEntityBase;
-use Drupal\ppp_legacy\TopicInterface;
+use Drupal\ppp\TopicInterface;
 
 /**
  * Defines the node entity class.

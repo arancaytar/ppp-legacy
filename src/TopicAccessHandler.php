@@ -1,16 +1,16 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\TopicAccessHandler.
+ * Contains \Drupal\ppp\TopicAccessHandler.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\ppp_legacy\Entity\Forum;
-use Drupal\ppp_legacy\Entity\Member;
+use Drupal\ppp\Entity\Forum;
+use Drupal\ppp\Entity\Member;
 
 /**
  * {@inheritdoc}

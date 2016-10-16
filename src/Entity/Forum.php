@@ -2,13 +2,13 @@
 
 /**
  * @file
- * Contains \Drupal\ppp_legacy\Entity\Forum.
+ * Contains \Drupal\ppp\Entity\Forum.
  */
 
-namespace Drupal\ppp_legacy\Entity;
+namespace Drupal\ppp\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
-use Drupal\ppp_legacy\ForumInterface;
+use Drupal\ppp\ForumInterface;
 
 /**
  * Represent a forum in the archive.
@@ -18,12 +18,12 @@ use Drupal\ppp_legacy\ForumInterface;
  *   label = @Translation("Forum"),
  *   handlers = {
  *     "form" = {
- *       "add" = "Drupal\ppp_legacy\Form\ForumAddForm",
- *       "edit" = "Drupal\ppp_legacy\Form\ForumEditForm",
- *       "delete" = "Drupal\ppp_legacy\Form\ForumDeleteForm",
+ *       "add" = "Drupal\ppp\Form\ForumAddForm",
+ *       "edit" = "Drupal\ppp\Form\ForumEditForm",
+ *       "delete" = "Drupal\ppp\Form\ForumDeleteForm",
  *     },
- *     "list_builder" = "Drupal\ppp_legacy\ForumListBuilder",
- *     "access" = "Drupal\ppp_legacy\ArchivedEntityAccessHandler"
+ *     "list_builder" = "Drupal\ppp\ForumListBuilder",
+ *     "access" = "Drupal\ppp\ArchivedEntityAccessHandler"
  *   },
  *   config_prefix = "forum",
  *   admin_permission = "administer PPP forums",

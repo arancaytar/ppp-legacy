@@ -11,8 +11,8 @@ namespace Drupal\ppp_pegacy\Form;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\Query\QueryFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\ppp_legacy\Entity\Forum;
-use Drupal\ppp_legacy\ForumInterface;
+use Drupal\ppp\Entity\Forum;
+use Drupal\ppp\ForumInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 abstract class ForumBaseForm extends EntityForm {

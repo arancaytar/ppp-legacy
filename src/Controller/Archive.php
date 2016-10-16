@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Contains \Drupal\ppp_legacy\Controller\Archive.
+ * Contains \Drupal\ppp\Controller\Archive.
  */
 
-namespace Drupal\ppp_legacy\Controller;
+namespace Drupal\ppp\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
 class Archive extends ControllerBase {
   public function content() {
-    module_load_include('inc', 'ppp_legacy', 'ppp_legacy.crud');
+    module_load_include('inc', 'ppp', 'ppp.crud');
 
     $categories = [1 => "Spiderweb's General Boards", 2 => "Spiderweb's Game Boards"];
-    $fora[1] = ppp_legacy_load_fora(1);
-    $fora[2] = ppp_legacy_load_fora(2);
+    $fora[1] = ppp_load_fora(1);
+    $fora[2] = ppp_load_fora(2);
 
     $page['fora'] = [
       '#sticky' => FALSE,
@@ -42,7 +42,7 @@ class Archive extends ControllerBase {
         ],
       ];
       foreach ($fora[$i] as $fid => $forum) {
-        if (!_ppp_legacy_access($fid)) {
+        if (!_ppp_access($fid)) {
           continue;
         }
         $page['fora']['#rows'][] = [

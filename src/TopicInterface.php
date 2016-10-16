@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\TopicInterface.
+ * Contains \Drupal\ppp\TopicInterface.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 
 use Drupal\Core\Entity\ContentEntityInterface;

@@ -1,14 +1,14 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\Entity\Member.
+ * Contains \Drupal\ppp\Entity\Member.
  */
 
-namespace Drupal\ppp_legacy\Entity;
+namespace Drupal\ppp\Entity;
 
 
 use Drupal\Core\Entity\ContentEntityBase;
-use Drupal\ppp_legacy\MemberInterface;
+use Drupal\ppp\MemberInterface;
 
 class Member extends ContentEntityBase implements MemberInterface {
   /**

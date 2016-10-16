@@ -1,16 +1,16 @@
 <?php
 /**
  * @file
- * Contains \Drupal\ppp_legacy\PostAccessHandler.
+ * Contains \Drupal\ppp\PostAccessHandler.
  */
 
-namespace Drupal\ppp_legacy;
+namespace Drupal\ppp;
 
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\ppp_legacy\Entity\Member;
-use Drupal\ppp_legacy\Entity\Topic;
+use Drupal\ppp\Entity\Member;
+use Drupal\ppp\Entity\Topic;
 
 class PostAccessHandler extends ArchivedEntityAccessHandler {
   /**
