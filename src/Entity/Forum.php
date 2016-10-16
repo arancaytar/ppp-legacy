@@ -45,6 +45,18 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  */
 class Forum extends ConfigEntityBase implements ForumInterface {
   /**
+   * The name of the admin permission.
+   * @var string PERMISSION_ADMIN
+   */
+  const PERMISSION_ADMIN = 'administer PPP forums';
+
+  /**
+   * The name of the admin permission.
+   * @var string PERMISSION_CLASSIFIED
+   */
+  const PERMISSION_CLASSIFIED = 'access classified PPP content';
+
+  /**
    * The forum's original numeric identifier on Spiderweb.
    * This is not the internal identifier.
    * @var integer $forum_id
