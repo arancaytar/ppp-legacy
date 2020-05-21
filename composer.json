@@ -15,6 +15,7 @@
         "drupal/console": "^1.9",
         "drupal/core": "^8",
         "drupal/core-composer-scaffold": "^8",
+        "drupal/xbbcode": "^4.0",
         "vlucas/phpdotenv": "^4",
         "zaporylie/composer-drupal-optimizations": "^1"
     },
