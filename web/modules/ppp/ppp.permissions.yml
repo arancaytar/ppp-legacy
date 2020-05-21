@@ -1,0 +1,20 @@
+add topic entities:
+  title: 'Create new Topic entities'
+
+administer topic entities:
+  title: 'Administer Topic entities'
+  description: 'Allow to access the administration form to configure Topic entities.'
+  restrict access: true
+
+delete topic entities:
+  title: 'Delete Topic entities'
+
+edit topic entities:
+  title: 'Edit Topic entities'
+
+view published topic entities:
+  title: 'View published Topic entities'
+
+view unpublished topic entities:
+  title: 'View unpublished Topic entities'
+
