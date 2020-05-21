@@ -1,0 +1,77 @@
+{
+    "name": "ermarian/pied-piper.ermarian.net",
+    "description": "Project template for Drupal 8 projects with composer",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.8",
+        "composer/installers": "^1",
+        "cweagans/composer-patches": "^1",
+        "drupal/console": "^1.9",
+        "drupal/core": "^8",
+        "drupal/core-composer-scaffold": "^8",
+        "vlucas/phpdotenv": "^4",
+        "zaporylie/composer-drupal-optimizations": "^1"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^8.8"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": ["load.environment.php"]
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@composer drupal:scaffold"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@composer drupal:scaffold"
+        ]
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"]
+        },
+        "patches": {
+            "drupal/console": {
+                "PR #4246": "https://patch-diff.githubusercontent.com/raw/hechoendrupal/drupal-console/pull/4246.patch"
+            }
+        }
+    }
+}
