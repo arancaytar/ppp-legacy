@@ -1,6 +1,8 @@
 ppp.settings:
   classified:
-    forums: [4]
-    topics: []
-    members: []
+    forums:
+      4: 4
+    topics: {}
+    posts: {}
+    members: {}
 

@@ -9,14 +9,6 @@ namespace Drupal\ppp;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 
-interface MemberInterface extends ContentEntityInterface, ArchivedEntityInterface {
-  /**
-   * @return integer
-   */
-  public function getMemberId();
+interface MemberInterface extends ContentEntityInterface {
 
-  /**
-   * @return string
-   */
-  public function getMemberName();
 }

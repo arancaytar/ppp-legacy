@@ -28,7 +28,7 @@ use Drupal\ppp\ForumInterface;
  *   config_prefix = "forum",
  *   admin_permission = "administer PPP forums",
  *   entity_keys = {
- *     "id" = "id",
+ *     "id" = "fid",
  *     "label" = "label",
  *     "status" = "status"
  *   },
@@ -37,10 +37,9 @@ use Drupal\ppp\ForumInterface;
  *     "delete-form" = "/admin/config/content/ppp/forums/manage/{ppp_forum}/delete",
  *   },
  *   config_export = {
- *     "id",
+ *     "fid",
  *     "label",
  *     "description",
- *     "forum_id",
  *   }
  * )
  */
@@ -52,17 +51,9 @@ class Forum extends ConfigEntityBase implements ForumInterface {
   const PERMISSION_ADMIN = 'administer PPP forums';
 
   /**
-   * The name of the admin permission.
-   * @var string PERMISSION_CLASSIFIED
+   * @var int $forum_id
    */
-  const PERMISSION_CLASSIFIED = 'access classified PPP content';
-
-  /**
-   * The forum's original numeric identifier on Spiderweb.
-   * This is not the internal identifier.
-   * @var integer $forum_id
-   */
-  protected $forum_id;
+  protected $fid;
 
   /**
    * The forum's name.
@@ -77,30 +68,10 @@ class Forum extends ConfigEntityBase implements ForumInterface {
   protected $description;
 
   /**
-   * Whether or not the forum is classified. Classified fora can only be
-   * accessed by users with the "access classified content" permission.
-   * @var boolean $classified
-   */
-  protected $classified;
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getForumId() {
-    return $this->forum_id;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function getDescription(): string {
     return $this->description;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isClassified() {
-    return $this->classified;
-  }
 }

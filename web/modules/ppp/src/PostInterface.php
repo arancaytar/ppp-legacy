@@ -8,9 +8,10 @@ namespace Drupal\ppp;
 
 
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\TypedData\Type\DateTimeInterface;
 
-interface PostInterface extends ContentEntityInterface, ArchivedEntityInterface {
+interface PostInterface extends EntityInterface {
   /**
    * @return integer
    */

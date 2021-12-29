@@ -1,19 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ppp\Entity\ForumInterface.
- */
-
 namespace Drupal\ppp;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 
-interface ForumInterface extends ConfigEntityInterface, ArchivedEntityInterface  {
-  /**
-   * @return integer
-   */
-  public function getForumId();
+interface ForumInterface extends ConfigEntityInterface {
 
   /**
    * @return string
